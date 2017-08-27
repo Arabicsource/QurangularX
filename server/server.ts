@@ -8,29 +8,43 @@ import { join } from 'path';
 import { AppServerModuleNgFactory } from '../dist/ngfactory/client/app/app.server.module.ngfactory';
 
 const PORT = 4000;
-
 enableProdMode();
 
-const app = express();
+class ServerFactory {
+  public static create(): express {
+    const app = express();
+    ServerFactory.setViewEngine(app);
+    ServerFactory.setPathHandlers(app);
 
-const template = readFileSync(join(__dirname, '..', 'dist', 'index.html')).toString();
+    return app;
+  }
 
-app.engine('html', (_, options, callback) => {
-  const opts = { document: template, url: options.req.url };
+  private static setViewEngine(app: express) {
+    const template = readFileSync(join(__dirname, '..', 'dist', 'index.html')).toString();
 
-  renderModuleFactory(AppServerModuleNgFactory, opts)
-    .then(html => callback(null, html));
-});
+    app.engine('html', (_, options, callback) => {
+      const opts = { document: template, url: options.req.url };
 
-app.set('view engine', 'html');
-app.set('views', 'client')
+      renderModuleFactory(AppServerModuleNgFactory, opts)
+        .then(html => callback(null, html));
+    });
 
-app.get('*.*', express.static(join(__dirname, '..', 'dist')));
+    app.set('view engine', 'html');
+    app.set('views', 'client');
 
-app.get('*', (req, res) => {
-  res.render('index', { req });
-});
+    app.get('*.*', express.static(join(__dirname, '..', 'dist')));
+  }
 
+  private static setPathHandlers(app: express) {
+
+    // Default handler
+    app.get('*', (req, res) => {
+      res.render('index', { req });
+    });
+  }
+}
+
+const app = ServerFactory.create();
 app.listen(PORT, () => {
   console.log(`listening on http://localhost:${PORT}!`);
 });
