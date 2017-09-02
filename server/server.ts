@@ -25,6 +25,10 @@ app.engine('html', (_, options, callback) => {
 app.set('view engine', 'html');
 app.set('views', 'client')
 
+app.get('/test', (req, res) => {
+  res.json({'a': 'c'} );
+});
+
 app.get('*.*', express.static(join(__dirname, '..', 'dist')));
 
 app.get('*', (req, res) => {
