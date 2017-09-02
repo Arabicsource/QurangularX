@@ -36,7 +36,9 @@ class ServerFactory {
   }
 
   private static setPathHandlers(app: express) {
-
+    app.get('/test', (req, res) => {
+      res.json( {'a': 'b'});
+    });
     // Default handler
     app.get('*', (req, res) => {
       res.render('index', { req });
