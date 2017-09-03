@@ -6,16 +6,20 @@ import { AppComponent } from './app.component';
 import { ChapterListComponent } from './chapter-list/chapter-list.component';
 import { ChapterService } from './services/chapter.service';
 import { HttpModule } from '@angular/http';
+import { CollapseModule } from 'ngx-bootstrap';
+import { MainNavigatorComponent } from './main-navigator/main-navigator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChapterListComponent
+    ChapterListComponent,
+    MainNavigatorComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'QuranX'}),
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    CollapseModule
   ],
   providers: [
     ChapterService
