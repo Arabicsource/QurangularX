@@ -7,6 +7,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { AppServerModuleNgFactory } from '../dist/ngfactory/client/app/app.server.module.ngfactory';
 import { Mongo } from './mongo';
+import { registerRequestHandlers } from './request-handlers/register-request-handlers';
 
 const PORT = 4000;
 enableProdMode();
@@ -37,14 +38,7 @@ class ServerFactory {
   }
 
   private static setPathHandlers(app: express) {
-    app.get('/test', async (req, res) => {
-      const db = await Mongo.connect();
-      const data = await db
-        .collection('test')
-        .find({})
-        .toArray();
-      res.json(data);
-    });
+    registerRequestHandlers(app);
     // Default handler
     app.get('*', (req, res) => {
       res.render('index', { req });
