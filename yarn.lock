@@ -147,9 +147,9 @@
     tslib "^1.7.1"
     xhr2 "^0.1.4"
 
-"@angular/router@^4.2.4":
-  version "4.3.6"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-4.3.6.tgz#64033edb4fcda08a323e7533b4a1820c0f28d130"
+"@angular/router@^4.4.0-RC.0":
+  version "4.4.0-RC.0"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-4.4.0-RC.0.tgz#ef6c075f1664a9fe677fa542334707e670461ee0"
   dependencies:
     tslib "^1.7.1"
 

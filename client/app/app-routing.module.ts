@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ChapterListComponent } from './chapter-list/chapter-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    children: []
+    component: ChapterListComponent
   }
 ];
 
