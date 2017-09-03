@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ChapterListComponent } from './chapter-list/chapter-list.component';
-import { TafsirListComponent } from './tafsir-list/tafsir-list.component';
-import { HadithCollectorsListComponent } from './hadith-collectors-list/hadith-collectors-list.component';
-import { SearchComponent } from './search/search.component';
-import { HelpComponent } from './help/help.component';
+import { ChapterListComponent } from './features/chapter-list/chapter-list.component';
+import { TafsirListComponent } from './features/tafsir-list/tafsir-list.component';
+import { HadithCollectorsListComponent } from './features/hadith-collectors-list/hadith-collectors-list.component';
+import { SearchComponent } from './features/search/search.component';
+import { HelpComponent } from './features/help/help.component';
 
 const routes: Routes = [
   {
