@@ -8,12 +8,20 @@ import { ChapterService } from './services/chapter.service';
 import { HttpModule } from '@angular/http';
 import { CollapseModule } from 'ngx-bootstrap';
 import { MainNavigatorComponent } from './main-navigator/main-navigator.component';
+import { TafsirListComponent } from './tafsir-list/tafsir-list.component';
+import { HadithCollectorsListComponent } from './hadith-collectors-list/hadith-collectors-list.component';
+import { SearchComponent } from './search/search.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChapterListComponent,
-    MainNavigatorComponent
+    MainNavigatorComponent,
+    TafsirListComponent,
+    HadithCollectorsListComponent,
+    SearchComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'QuranX'}),

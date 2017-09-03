@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'qx-main-navigator',
@@ -7,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainNavigatorComponent {
   public isCollapsed = true;
+
+  constructor(router: Router) {
+    router.events.subscribe(x => this.isCollapsed = true);
+  }
 
   public toggleIsCollapsed() {
     this.isCollapsed = !this.isCollapsed;
