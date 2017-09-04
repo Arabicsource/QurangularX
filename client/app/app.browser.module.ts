@@ -11,6 +11,9 @@ import { HadithCollectorsListComponent } from './features/hadith-collectors-list
 import { SearchComponent } from './features/search/search.component';
 import { HelpComponent } from './features/help/help.component';
 import { MainNavigatorComponent } from './components/main-navigator/main-navigator.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './features/not-found/not-found.component';
+import { routes } from './features/routes';
 
 @NgModule({
   declarations: [
@@ -20,12 +23,14 @@ import { MainNavigatorComponent } from './components/main-navigator/main-navigat
     TafsirListComponent,
     HadithCollectorsListComponent,
     SearchComponent,
-    HelpComponent
+    HelpComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'QuranX'}),
     AppRoutingModule,
     HttpModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     ChapterService
