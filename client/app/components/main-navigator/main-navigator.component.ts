@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,15 +6,17 @@ import { Router } from '@angular/router';
   templateUrl: './main-navigator.component.html',
   styleUrls: ['./main-navigator.component.sass']
 })
-export class MainNavigatorComponent {
+export class MainNavigatorComponent implements OnInit {
   public isCollapsed = true;
 
-  constructor(router: Router) {
-    router.events.subscribe(x => this.isCollapsed = true);
-  }
+  constructor(private router: Router) {}
 
   public toggleIsCollapsed() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe(x => this.isCollapsed = true);
   }
 
 }
