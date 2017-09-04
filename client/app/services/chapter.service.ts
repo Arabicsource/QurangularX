@@ -18,13 +18,14 @@ export class ChapterService {
     if (!this.hasData) {
       this.http
         .get('http://localhost:4200/api/chapters')
-        .map(res => res.json())
+        .map(res => <Api.Models.Chapter[]>res.json())
+        .map(chapters => [...chapters].sort((a, b) => a.chapterNumber - b.chapterNumber))
         .subscribe((data: Api.Models.Chapter[]) => {
           this.hasData = true;
           this.chaptersSubject.next(data);
         });
     }
-    
+
     return this.chaptersSubject.asObservable();
   }
 
