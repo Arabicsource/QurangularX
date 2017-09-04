@@ -54,10 +54,22 @@ describe('ChapterListComponent', () => {
   });
 
   it('should render all chapters', () => {
-    fixture.detectChanges();
     const linkElements = fixture.debugElement.queryAll(By.css('a'));
     expect(linkElements.length).toEqual(2);
-    expect(linkElements[0].nativeElement.attributes['href'].value).toEqual('/1.1');
-    expect(linkElements[1].nativeElement.attributes['href'].value).toEqual('/2.1');
   });
+
+  it('should should link to first verse of each chapter', () => {
+    const linkElements = fixture.debugElement.queryAll(By.css('a'));
+    expect(linkElements.length).toEqual(2);
+    expect(linkElements[0].nativeElement.attributes['href'].value).toEqual('/2.1');
+    expect(linkElements[1].nativeElement.attributes['href'].value).toEqual('/1.1');
+  });
+
+  it('should should render chapter.englishText', () => {
+    const linkElements = fixture.debugElement.queryAll(By.css('a'));
+    expect(linkElements.length).toEqual(2);
+    expect(linkElements[0].nativeElement.innerText).toEqual('english-name-2');
+    expect(linkElements[1].nativeElement.innerText).toEqual('english-name-1');
+  });
+
 });

@@ -14,8 +14,7 @@ export class ChapterListComponent implements OnInit {
   constructor(private chapterService: ChapterService) { }
 
   ngOnInit() {
-    this.chapters = this.chapterService.getChapters()
-      .map(chapters => [...chapters].sort((a, b) => a.chapterNumber - b.chapterNumber));
+    this.chapters = this.chapterService.getChapters();
   }
 
 }
