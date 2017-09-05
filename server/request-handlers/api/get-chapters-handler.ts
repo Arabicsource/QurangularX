@@ -1,5 +1,5 @@
 import { Mongo } from '../../mongo';
-import { Api } from '../../api-models/chapter';
+import { Chapter } from "../../api-models/chapter";
 
 export async function getChaptersHandler(req, res) {
   const db = await Mongo.connect();
@@ -7,7 +7,7 @@ export async function getChaptersHandler(req, res) {
     .collection('chapters')
     .find({})
     .map(x => {
-      return new Api.Models.Chapter({
+      return new Chapter({
         chapterNumber: x.chapterNumber,
         arabicName: x.arabicName,
         englishName: x.englishName,

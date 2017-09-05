@@ -3,7 +3,7 @@ import { ChapterListComponent } from './chapter-list.component';
 import { ChapterService } from '../../services/chapter.service';
 import { Observable } from 'rxjs/Observable';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Api } from '../../../../server/api-models/chapter';
+import { Chapter } from '../../../../server/api-models/chapter';
 import { By } from '@angular/platform-browser';
 
 describe('ChapterListComponent', () => {
@@ -11,7 +11,7 @@ describe('ChapterListComponent', () => {
   let fixture: ComponentFixture<ChapterListComponent>;
   let mockChapterService;
 
-  const chaptersData: Api.Models.Chapter[] = [
+  const chaptersData: Chapter[] = [
     {
       englishName: 'english-name-2',
       chapterNumber: 2,
