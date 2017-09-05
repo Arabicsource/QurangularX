@@ -13,15 +13,15 @@ describe('ChapterListComponent', () => {
 
   const chaptersData: Chapter[] = [
     {
-      englishName: 'english-name-2',
+      englishName: 'english-key-2',
       chapterNumber: 2,
-      arabicName: 'arabic-name-2',
+      arabicName: 'arabic-key-2',
       numberOfVerses: 2
     },
     {
-      englishName: 'english-name-1',
+      englishName: 'english-key-1',
       chapterNumber: 1,
-      arabicName: 'arabic-name-1',
+      arabicName: 'arabic-key-1',
       numberOfVerses: 1
     }
   ];
@@ -68,8 +68,8 @@ describe('ChapterListComponent', () => {
   it('should should render chapter.englishText', () => {
     const linkElements = fixture.debugElement.queryAll(By.css('a'));
     expect(linkElements.length).toEqual(2);
-    expect(linkElements[0].nativeElement.innerText).toEqual('english-name-2');
-    expect(linkElements[1].nativeElement.innerText).toEqual('english-name-1');
+    expect(linkElements[0].nativeElement.innerText).toEqual('english-key-2');
+    expect(linkElements[1].nativeElement.innerText).toEqual('english-key-1');
   });
 
 });

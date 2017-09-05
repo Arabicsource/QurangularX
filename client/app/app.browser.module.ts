@@ -14,6 +14,7 @@ import { MainNavigatorComponent } from './components/main-navigator/main-navigat
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { routes } from './features/routes';
+import { ShowVersesComponent } from './features/show-verses/show-verses.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { routes } from './features/routes';
     HadithCollectorsListComponent,
     SearchComponent,
     HelpComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ShowVersesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'QuranX'}),
