@@ -3,7 +3,7 @@ import { ChapterListComponent } from './chapter-list.component';
 import { ChapterService } from '../../services/chapter.service';
 import { Observable } from 'rxjs/Observable';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Chapter } from '../../../../server/api-models/chapter';
+import { Chapter } from '../../../../shared/api-models/chapter';
 import { By } from '@angular/platform-browser';
 
 describe('ChapterListComponent', () => {

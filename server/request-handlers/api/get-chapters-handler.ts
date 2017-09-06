@@ -1,7 +1,8 @@
 import { Mongo } from '../../mongo';
-import { Chapter } from "../../api-models/chapter";
+import { Chapter } from '../../../shared/api-models/chapter';
+import express = require('express');
 
-export async function getChaptersHandler(req, res) {
+export async function getChaptersHandler(req: express.Request, res: express.Response) {
   const db = await Mongo.connect();
   const data = (await db
     .collection('chapters')

@@ -3,6 +3,6 @@
 </p>
 <ul>
   <li *ngFor="let verse of verses$ | async">
-    Chapter: {{ verse.chapterNumber }} / First verse: {{ verse.firstVerse }} / Last verse: {{ verse.lastVerse }}
+    {{ verse.chapterNumber }}.{{ verse.verseNumber }}
   </li>
 </ul>

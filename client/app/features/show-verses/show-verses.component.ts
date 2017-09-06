@@ -1,12 +1,15 @@
 import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/takeWhile';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/takeWhile';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { routeParams } from '../route-params';
 import { Observable } from 'rxjs/Observable';
-import { VerseRange } from '../../../../server/api-models/verse-range';
-import { regexParse } from '../../utils/regex-parser';
+import { VerseRange } from '../../../../shared/api-models/verse-range';
+import { regexParse } from '../../../../shared/utils/regex-parser';
+import { Verse } from '../../../../shared/api-models/verse';
+import { VerseService } from '../../services/verse.service';
 
 @Component({
   selector: 'qx-show-verses',
@@ -16,16 +19,17 @@ import { regexParse } from '../../utils/regex-parser';
 export class ShowVersesComponent implements OnInit, OnDestroy {
   private isAlive = true;
 
-  public verses$: Observable<VerseRange[]>;
+  public verses$: Observable<Verse[]>;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private verseService: VerseService) {
   }
 
   ngOnInit() {
     this.verses$ = this.activatedRoute
       .params
       .takeWhile(_ => this.isAlive)
-      .map(params => this.extractVerses(params[routeParams.verses.key]));
+      .map(params => this.extractVerses(params[routeParams.verses.key]))
+      .switchMap(verseRanges => this.verseService.getVerses(verseRanges));
   }
 
   private extractVerses(verses: string): VerseRange[] {

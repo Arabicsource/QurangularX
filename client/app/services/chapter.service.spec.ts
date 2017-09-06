@@ -3,7 +3,7 @@ import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 import { ChapterService } from './chapter.service';
 import { HttpModule, XHRBackend, Response, ResponseOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { Chapter } from '../../../server/api-models/chapter';
+import { Chapter } from '../../../shared/api-models/chapter';
 
 describe('ChapterService', () => {
   let mockBackend: MockBackend;

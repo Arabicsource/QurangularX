@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChapterService } from '../../services/chapter.service';
 import { Observable } from 'rxjs/Observable';
-import { Chapter } from '../../../../server/api-models/chapter';
+import { Chapter } from '../../../../shared/api-models/chapter';
 
 @Component({
   selector: 'qx-chapter-list',

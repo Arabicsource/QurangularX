@@ -1,27 +1,28 @@
 import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
-import { platformServer, renderModuleFactory } from '@angular/platform-server';
+import { renderModuleFactory } from '@angular/platform-server';
 import { enableProdMode } from '@angular/core';
-import * as express from 'express';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { AppServerModuleNgFactory } from '../dist/ngfactory/client/app/app.server.module.ngfactory';
-import { Mongo } from './mongo';
 import { registerRequestHandlers } from './request-handlers/register-request-handlers';
+import bodyParser = require('body-parser');
+import express = require('express');
 
 const PORT = 4000;
 enableProdMode();
 
 class ServerFactory {
-  public static create(): express {
+  public static create(): express.Application {
     const app = express();
+    app.use(bodyParser.json());
     ServerFactory.setViewEngine(app);
     ServerFactory.setPathHandlers(app);
 
     return app;
   }
 
-  private static setViewEngine(app: express) {
+  private static setViewEngine(app: express.Application) {
     const template = readFileSync(join(__dirname, '..', 'dist', 'index.html')).toString();
 
     app.engine('html', (_, options, callback) => {
@@ -37,7 +38,7 @@ class ServerFactory {
     app.get('*.*', express.static(join(__dirname, '..', 'dist')));
   }
 
-  private static setPathHandlers(app: express) {
+  private static setPathHandlers(app: express.Application) {
     registerRequestHandlers(app);
     // Default handler
     app.get('*', (req, res) => {

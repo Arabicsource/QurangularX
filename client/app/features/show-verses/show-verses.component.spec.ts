@@ -4,7 +4,7 @@ import { ShowVersesComponent } from './show-verses.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ActivatedRoute, Params } from '@angular/router';
-import { VerseRange } from '../../../../server/api-models/verse-range';
+import { VerseRange } from '../../../../shared/api-models/verse-range';
 
 describe('ShowVersesComponent', () => {
   let component: ShowVersesComponent;

@@ -2,9 +2,10 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Chapter } from '../../../server/api-models/chapter';
+import { Chapter } from '../../../shared/api-models/chapter';
 import { Http } from '@angular/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -17,7 +18,7 @@ export class ChapterService {
   public getChapters(): Observable<Chapter[]> {
     if (!this.hasData) {
       this.http
-        .get('http://localhost:4200/api/chapters')
+        .post(environment.apiServerUrl + 'api/chapters', null)
         .map(res => <Chapter[]>res.json())
         .map(chapters => [...chapters].sort((a, b) => a.chapterNumber - b.chapterNumber))
         .subscribe((data: Chapter[]) => {

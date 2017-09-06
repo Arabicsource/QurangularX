@@ -15,6 +15,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { routes } from './features/routes';
 import { ShowVersesComponent } from './features/show-verses/show-verses.component';
+import { VerseService } from './services/verse.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ShowVersesComponent } from './features/show-verses/show-verses.componen
     RouterModule.forRoot(routes)
   ],
   providers: [
-    ChapterService
+    ChapterService,
+    VerseService
   ],
   bootstrap: [AppComponent]
 })
