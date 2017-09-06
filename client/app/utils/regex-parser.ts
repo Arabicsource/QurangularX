@@ -6,6 +6,7 @@ export function regexParse(value: string, regex: RegExp) {
     match = regex.exec(value);
     if (match) {
       result.push(match);
+      value = value.substr(match.index + match[0].length);
     }
   }while (match);
 

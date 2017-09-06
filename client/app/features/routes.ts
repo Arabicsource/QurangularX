@@ -14,12 +14,7 @@ export const routes: Route[] = [
       matcher: routeMatchers.verses
     },
     {
-      path: 'not-found',
-      component: NotFoundComponent
-    }
-    ,
-    {
       path: '**',
-      redirectTo: 'not-found'
+      component: NotFoundComponent
     }
   ];

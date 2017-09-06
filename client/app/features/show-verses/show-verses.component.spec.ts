@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShowVersesComponent } from './show-verses.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -37,9 +37,10 @@ describe('ShowVersesComponent', () => {
 
   it('should parse a single verse', () => {
     let parsedVerses: VerseRange[];
-    component.verses.subscribe(x => parsedVerses = x);
 
-    paramsSubject.next({params: { verses: '1.1' } });
+    paramsSubject.next({ verses: '1.1' });
+    component.verses$.subscribe(x => parsedVerses = x);
+
     expect(parsedVerses.length).toEqual(1);
     expect(parsedVerses[0].chapterNumber).toEqual(1);
     expect(parsedVerses[0].firstVerse).toEqual(1);
@@ -48,9 +49,10 @@ describe('ShowVersesComponent', () => {
 
   it('should parse a single verse-range', () => {
     let parsedVerses: VerseRange[];
-    component.verses.subscribe(x => parsedVerses = x);
 
-    paramsSubject.next({params: { verses: '1.1-2' } });
+    paramsSubject.next({ verses: '1.1-2' });
+    component.verses$.subscribe(x => parsedVerses = x);
+
     expect(parsedVerses.length).toEqual(1);
     expect(parsedVerses[0].chapterNumber).toEqual(1);
     expect(parsedVerses[0].firstVerse).toEqual(1);
@@ -60,16 +62,16 @@ describe('ShowVersesComponent', () => {
 
   it('should parse multiple verses', () => {
     let parsedVerses: VerseRange[];
-    component.verses.subscribe(x => parsedVerses = x);
 
-    paramsSubject.next({params: { verses: '1.1-2,3.4,5.67-68' } });
+    component.verses$.subscribe(x => parsedVerses = x);
+    paramsSubject.next({ verses: '1.1-2,3.4,5.67-68' });
+
     expect(parsedVerses.length).toEqual(3);
 
     // 1.1-2
     expect(parsedVerses[0].chapterNumber).toEqual(1);
     expect(parsedVerses[0].firstVerse).toEqual(1);
     expect(parsedVerses[0].lastVerse).toEqual(2);
-
 
     // 3.4
     expect(parsedVerses[1].chapterNumber).toEqual(3);
