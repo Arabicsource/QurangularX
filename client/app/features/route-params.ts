@@ -1,7 +1,11 @@
+import { routeMatchers } from './route-matchers';
+
 export const routeParams = {
   verses: {
     key: 'verses',
-    urlRegex: /^\d+\.\d+(-\d+)?(,\d+\.\d+(-\d+)?)*$/,
-    extractRegex: /(\d+)\.(\d+)-?(\d+)/g
+    extractRegex: new RegExp('(\\d+)\\.(\\d+)'),
+    matcher: routeMatchers.verses
   }
 };
+
+

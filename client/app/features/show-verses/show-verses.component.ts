@@ -1,7 +1,11 @@
 import 'rxjs/add/operator/takeWhile';
+import 'rxjs/add/operator/map';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { routeParams } from '../route-params';
+import { Observable } from 'rxjs/Observable';
+import { VerseRange } from '../../../../server/api-models/verse-range';
+import { regexParse } from '../../utils/regex-parser';
 
 @Component({
   selector: 'qx-show-verses',
@@ -11,26 +15,29 @@ import { routeParams } from '../route-params';
 export class ShowVersesComponent implements OnInit, OnDestroy {
   private isAlive = true;
 
+  public verses: Observable<VerseRange[]>;
+
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.activatedRoute
+    this.verses = this.activatedRoute
       .params
       .takeWhile(_ => this.isAlive)
-      .subscribe(params => this.showVerses(params[routeParams.verses.key]));
+      .map(params => this.extractVerses(params[routeParams.verses.key]));
   }
 
-  private showVerses(verses: string) {
-    console.log('verses', verses);
-    verses.replace(routeParams.verses.extractRegex, function(m, g1, g2, g3) {
-      console.log('****', m, g1, g2, g3);
-      return '';
-    });
+  private extractVerses(verses: string): VerseRange[] {
+    const result: VerseRange[] =
+      regexParse(verses, routeParams.verses.extractRegex)
+        .map(x => <VerseRange>{
+          chapterNumber: +x[0],
+          firstVerse: +x[1],
+          lastVerse: x.length > 2 ? +x[2] : +x[1]
+        });
+    return result;
   }
-
 
   ngOnDestroy() {
     this.isAlive = false;
   }
-
 }
