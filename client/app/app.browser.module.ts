@@ -16,6 +16,7 @@ import { NotFoundComponent } from './features/not-found/not-found.component';
 import { routes } from './features/routes';
 import { ShowVersesComponent } from './features/show-verses/show-verses.component';
 import { VerseService } from './services/verse.service';
+import { ShowVerseComponent } from './components/show-verse/show-verse.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { VerseService } from './services/verse.service';
     SearchComponent,
     HelpComponent,
     NotFoundComponent,
-    ShowVersesComponent
+    ShowVersesComponent,
+    ShowVerseComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'QuranX'}),

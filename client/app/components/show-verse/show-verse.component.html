@@ -1,0 +1,27 @@
+<article class="verse">
+  <a name="{{ verse.chapterNumber + '.' + verse.verseNumber}}">
+    <span class="verseReference" itemprop="articleSection">{{ verse.chapterNumber + '.' + verse.verseNumber }}</span>
+  </a>
+  <a routerLink="/analysis/{{verse.chapterNumber}}.{{verse.verseNumber}}">
+    <dl class="countAndLabel">
+      <dd>
+        {{verse.numberOfRoots}}
+      </dd>
+      <dt>Roots</dt>
+    </dl>
+  </a>
+  <a routerLink="/tafsirs/{{verse.chapterNumber}}.{{verse.verseNumber}}" *ngIf="verse.numberOfTafsirs > 0">
+    <dl class="countAndLabel">
+      <dd>
+        {{verse.numberOfTafsirs}}
+      </dd>
+      <dt>Tafsirs</dt>
+    </dl>
+  </a>
+  <dl class="translations" itemprop="articleBody">
+    <ng-template ngFor let-translation [ngForOf]="verse.translations">
+      <dt>{{translation.translator.name}}</dt>
+      <dl>{{translation.text}}</dl>
+    </ng-template>
+  </dl>
+</article>
