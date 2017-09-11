@@ -12,7 +12,7 @@ export class VerseService {
 
   public getVerses(verses: VerseRange[]): Observable<Verse[]> {
     return this.http
-      .post(environment.apiServerUrl + 'api/verses', verses)
+      .post(environment.apiServerUrl + 'api/verses', { verses })
       .map(res => <Verse[]>res.json());
   }
 
