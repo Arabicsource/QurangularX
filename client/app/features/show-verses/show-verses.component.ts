@@ -29,7 +29,7 @@ export class ShowVersesComponent implements OnInit, OnDestroy {
       .params
       .takeWhile(_ => this.isAlive)
       .map(params => this.extractVerses(params[routeParams.verses.key]))
-      .switchMap(verseRanges => this.verseService.getVerses(verseRanges));
+      .switchMap(verses => this.verseService.getVerses(verses));
   }
 
   private extractVerses(verses: string): VerseRange[] {
