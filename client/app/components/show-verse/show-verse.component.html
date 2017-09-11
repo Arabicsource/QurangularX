@@ -18,6 +18,14 @@
       <dt>Tafsirs</dt>
     </dl>
   </a>
+  <a routerLink="/hadiths/{{verse.chapterNumber}}.{{verse.verseNumber}}" *ngIf="verse.numberOfHadiths > 0">
+    <dl class="countAndLabel">
+      <dd>
+        {{verse.numberOfHadiths}}
+      </dd>
+      <dt>Hadiths</dt>
+    </dl>
+  </a>
   <dl class="translations" itemprop="articleBody">
     <ng-template ngFor let-translation [ngForOf]="verse.translations">
       <dt>{{translation.translator.name}}</dt>
