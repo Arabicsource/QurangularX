@@ -1,7 +1,7 @@
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/takeWhile';
+import 'rxjs/add/operator/takeUntil';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { routeParams } from '../route-params';
@@ -10,6 +10,7 @@ import { VerseRange } from '../../../../shared/api-models/verse-range';
 import { regexParse } from '../../../../shared/utils/regex-parser';
 import { Verse } from '../../../../shared/api-models/verse';
 import { VerseService } from '../../services/verse.service';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'qx-show-verses',
@@ -17,7 +18,7 @@ import { VerseService } from '../../services/verse.service';
   styleUrls: ['./show-verses.component.sass']
 })
 export class ShowVersesComponent implements OnInit, OnDestroy {
-  private isAlive = true;
+  private destroyed$ = new Subject<any>();
 
   public verses$: Observable<Verse[]>;
 
@@ -27,7 +28,7 @@ export class ShowVersesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.verses$ = this.activatedRoute
       .params
-      .takeWhile(_ => this.isAlive)
+      .takeUntil(this.destroyed$)
       .map(params => this.extractVerses(params[routeParams.verses.key]))
       .switchMap(verses => this.verseService.getVerses(verses));
   }
@@ -44,6 +45,6 @@ export class ShowVersesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.isAlive = false;
+    this.destroyed$.complete();
   }
 }
