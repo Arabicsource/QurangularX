@@ -6,15 +6,15 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Chapter } from '../../../shared/api-models/chapter';
 
 describe('ChapterService', () => {
-  let mockBackend: MockBackend;
   let service: ChapterService;
+  let mockBackend: MockBackend;
   let lastHttpConnection: MockConnection;
 
   beforeEach(() => {
     mockBackend = new MockBackend();
     mockBackend.connections.subscribe(x => lastHttpConnection = x);
     TestBed.configureTestingModule({
-      imports: [HttpModule],
+      imports: [ HttpModule ],
       providers: [
         ChapterService,
         {
