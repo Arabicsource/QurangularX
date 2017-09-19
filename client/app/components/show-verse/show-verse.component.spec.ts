@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShowVerseComponent } from './show-verse.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ShowVerseComponent', () => {
   let component: ShowVerseComponent;
@@ -8,9 +9,10 @@ describe('ShowVerseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShowVerseComponent ]
-    })
-    .compileComponents();
+        declarations: [ShowVerseComponent],
+        imports: [RouterTestingModule],
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {

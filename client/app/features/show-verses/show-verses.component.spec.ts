@@ -7,31 +7,32 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Verse } from '../../../../shared/api-models/verse';
 import { VerseService } from '../../services/verse.service';
 import { Observable } from 'rxjs/Observable';
+import { ShowVerseComponent } from '../../components/show-verse/show-verse.component';
 
 describe('ShowVersesComponent', () => {
   let component: ShowVersesComponent;
   let fixture: ComponentFixture<ShowVersesComponent>;
-  const paramsSubject = new BehaviorSubject<Params>({ verses: '1.1' });
+  const paramsSubject = new BehaviorSubject<Params>({verses: '1.1'});
   let mockVerseService;
 
   beforeEach(async(() => {
     mockVerseService = jasmine.createSpyObj(null, ['getVerses']);
     mockVerseService.getVerses.and.returnValue(Observable.of([]));
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule ],
-      declarations: [ ShowVersesComponent ],
-      providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: { params: paramsSubject.asObservable() }
-        },
-        {
-          provide: VerseService,
-          useValue: mockVerseService
-        }
-      ]
-    })
-    .compileComponents();
+        imports: [RouterTestingModule],
+        declarations: [ShowVersesComponent, ShowVerseComponent],
+        providers: [
+          {
+            provide: ActivatedRoute,
+            useValue: {params: paramsSubject.asObservable()}
+          },
+          {
+            provide: VerseService,
+            useValue: mockVerseService
+          }
+        ]
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -53,7 +54,7 @@ describe('ShowVersesComponent', () => {
       }
     ]));
 
-    paramsSubject.next({ verses: '1.1' });
+    paramsSubject.next({verses: '1.1'});
     component.verses$.subscribe(x => parsedVerses = x);
 
     expect(parsedVerses.length).toEqual(1);
@@ -74,7 +75,7 @@ describe('ShowVersesComponent', () => {
       }
     ]));
 
-    paramsSubject.next({ verses: '1.1-2' });
+    paramsSubject.next({verses: '1.1-2'});
     component.verses$.subscribe(x => parsedVerses = x);
 
     expect(parsedVerses.length).toEqual(2);
@@ -111,7 +112,7 @@ describe('ShowVersesComponent', () => {
     ]));
 
     component.verses$.subscribe(x => parsedVerses = x);
-    paramsSubject.next({ verses: '3.4,5.67-68,1.1-2' });
+    paramsSubject.next({verses: '3.4,5.67-68,1.1-2'});
 
     expect(parsedVerses.length).toEqual(5);
 
