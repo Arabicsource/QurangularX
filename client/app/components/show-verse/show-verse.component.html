@@ -1,25 +1,25 @@
 <article class="verse">
-  <a name="{{ verse?.chapterNumber + '.' + verse?.verseNumber}}" class="badge">
+  <a name="{{ verse?.chapterNumber + '.' + verse?.verseNumber}}" class="verse-reference">
     <span class="verseReference" itemprop="articleSection">{{ verse?.chapterNumber + '.' + verse?.verseNumber }}</span>
   </a>
-  <a routerLink="/analysis/{{verse?.chapterNumber}}.{{verse?.verseNumber}}">
-    <dl class="countAndLabel">
+  <a routerLink="/analysis/{{verse?.chapterNumber}}.{{verse?.verseNumber}}" class="xref-link">
+    <dl>
       <dd>
         {{verse?.numberOfRoots}}
       </dd>
       <dt>Roots</dt>
     </dl>
   </a>
-  <a routerLink="/tafsirs/{{verse?.chapterNumber}}.{{verse?.verseNumber}}" *ngIf="verse?.numberOfTafsirs > 0">
-    <dl class="countAndLabel">
+  <a routerLink="/tafsirs/{{verse?.chapterNumber}}.{{verse?.verseNumber}}" *ngIf="verse?.numberOfTafsirs > 0" class="xref-link">
+    <dl>
       <dd>
         {{verse.numberOfTafsirs}}
       </dd>
       <dt>Tafsirs</dt>
     </dl>
   </a>
-  <a routerLink="/hadiths/{{verse?.chapterNumber}}.{{verse?.verseNumber}}" *ngIf="verse?.numberOfHadiths > 0">
-    <dl class="countAndLabel">
+  <a routerLink="/hadiths/{{verse?.chapterNumber}}.{{verse?.verseNumber}}" *ngIf="verse?.numberOfHadiths > 0" class="xref-link">
+    <dl>
       <dd>
         {{verse.numberOfHadiths}}
       </dd>
