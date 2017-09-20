@@ -1,5 +1,5 @@
 <article class="verse">
-  <a name="{{ verse?.chapterNumber + '.' + verse?.verseNumber}}">
+  <a name="{{ verse?.chapterNumber + '.' + verse?.verseNumber}}" class="badge">
     <span class="verseReference" itemprop="articleSection">{{ verse?.chapterNumber + '.' + verse?.verseNumber }}</span>
   </a>
   <a routerLink="/analysis/{{verse?.chapterNumber}}.{{verse?.verseNumber}}">
