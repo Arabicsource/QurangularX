@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "qx",
       "styles": [
-        "styles.sass"
+        "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
