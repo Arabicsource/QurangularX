@@ -16,22 +16,22 @@ export async function getVersesHandler(req: express.Request, res: express.Respon
   const data = (await db
     .collection('translations')
     .find({'$or': requestedVerses})
-    .map(x => new Verse({
+    .map(x => <Verse> {
       chapter: x.chapter,
       verse: x.verse,
       numberOfHadiths: x.numberOfHadiths,
       numberOfTafsirs: x.numberOfTafsirs,
       numberOfRoots: x.numberOfRoots,
       translations: x.translations
-        .map(t => new Translation({
+        .map(t => <Translation> {
           text: t.text,
-          translator: new Translator({
+          translator: <Translator>{
             name: t.translator.name,
             displayPriority: t.translator.displayPriority,
             code: t.translator.code
-          })
-        }))
-    }))
+          }
+        })
+    })
     .toArray()
   );
   res.json(data);

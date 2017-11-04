@@ -8,12 +8,12 @@ export async function getChaptersHandler(req: express.Request, res: express.Resp
     .collection('chapters')
     .find({})
     .map(x => {
-      return new Chapter({
+      return <Chapter> {
         chapter: x.chapter,
         arabicName: x.arabicName,
         englishName: x.englishName,
         numberOfVerses: x.numberOfVerses
-      });
+      };
     })
     .toArray())
     .sort((a, b) => a.chapter - b.chapter);
