@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { Verse } from '../../../shared/api-models/verse';
 import { environment } from '../../environments/environment';
 
+import 'rxjs/add/operator/map';
+
 @Injectable()
 export class VerseService {
 
@@ -18,17 +20,17 @@ export class VerseService {
 
   private sortVerses(requestedVerses: VerseRange[], unsortedVerses: Verse[]): Verse[] {
     const sortedVerses = unsortedVerses.sort((v1: Verse, v2: Verse) => {
-      if (v1.chapterNumber !== v2.chapterNumber) {
-        return v1.chapterNumber - v2.chapterNumber;
+      if (v1.chapter !== v2.chapter) {
+        return v1.chapter - v2.chapter;
       }
-      return v1.verseNumber - v2.verseNumber;
+      return v1.verse - v2.verse;
     });
 
     const verseMatchesRequest = function (requestedVerse: VerseRange, verse: Verse): boolean {
       return (
-        verse.chapterNumber === requestedVerse.chapterNumber
-        && verse.verseNumber >= requestedVerse.firstVerse
-        && verse.verseNumber <= requestedVerse.lastVerse);
+        verse.chapter === requestedVerse.chapter
+        && verse.verse >= requestedVerse.firstVerse
+        && verse.verse <= requestedVerse.lastVerse);
 
     };
 

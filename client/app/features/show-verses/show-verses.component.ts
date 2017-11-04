@@ -37,7 +37,7 @@ export class ShowVersesComponent implements OnInit, OnDestroy {
     const result: VerseRange[] =
       regexParse(verses, routeParams.verses.extractRegex)
         .map(x => <VerseRange>{
-            chapterNumber: +x[1],
+            chapter: +x[1],
             firstVerse: +x[2],
             lastVerse: +x[3] || +x[2]
         });

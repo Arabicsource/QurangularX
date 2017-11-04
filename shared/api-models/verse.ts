@@ -1,8 +1,8 @@
 import { Translation } from './translation';
 
 export class Verse {
-  public chapterNumber: number;
-  public verseNumber: number;
+  public chapter: number;
+  public verse: number;
   public translations: Translation[];
   public numberOfHadiths: number;
   public numberOfTafsirs: number;

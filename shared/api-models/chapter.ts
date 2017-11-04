@@ -1,5 +1,5 @@
 export class Chapter {
-  public chapterNumber: number;
+  public chapter: number;
   public arabicName: string;
   public englishName: string;
   public numberOfVerses: number;
@@ -8,3 +8,4 @@ export class Chapter {
     Object.assign(this, params);
   }
 }
+

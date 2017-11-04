@@ -14,13 +14,13 @@ describe('ChapterListComponent', () => {
   const chaptersData: Chapter[] = [
     {
       englishName: 'english-key-2',
-      chapterNumber: 2,
+      chapter: 2,
       arabicName: 'arabic-key-2',
       numberOfVerses: 2
     },
     {
       englishName: 'english-key-1',
-      chapterNumber: 1,
+      chapter: 1,
       arabicName: 'arabic-key-1',
       numberOfVerses: 1
     }

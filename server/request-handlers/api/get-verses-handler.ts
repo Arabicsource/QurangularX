@@ -6,8 +6,8 @@ import { Translator } from '../../../shared/api-models/translator';
 
 export async function getVersesHandler(req: express.Request, res: express.Response) {
   const requestedVerses = req.body.verses.map(x => <any>{
-    chapterNumber: x.chapterNumber,
-    verseNumber: {'$gte': x.firstVerse, '$lte': x.lastVerse}
+    chapter: x.chapter,
+    verse: {'$gte': x.firstVerse, '$lte': x.lastVerse}
   });
 
   console.log('VERSES REQUESTED', requestedVerses);
@@ -17,8 +17,8 @@ export async function getVersesHandler(req: express.Request, res: express.Respon
     .collection('translations')
     .find({'$or': requestedVerses})
     .map(x => new Verse({
-      chapterNumber: x.chapterNumber,
-      verseNumber: x.verseNumber,
+      chapter: x.chapter,
+      verse: x.verse,
       numberOfHadiths: x.numberOfHadiths,
       numberOfTafsirs: x.numberOfTafsirs,
       numberOfRoots: x.numberOfRoots,

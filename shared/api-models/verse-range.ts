@@ -1,5 +1,5 @@
 export class VerseRange {
-  public chapterNumber: number;
+  public chapter: number;
   public firstVerse: number;
   public lastVerse?: number;
 

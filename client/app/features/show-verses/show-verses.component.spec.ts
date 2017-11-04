@@ -49,8 +49,8 @@ describe('ShowVersesComponent', () => {
     let parsedVerses: Verse[];
     mockVerseService.getVerses.and.returnValue(Observable.of([
       {
-        chapterNumber: 1,
-        verseNumber: 1
+        chapter: 1,
+        verse: 1
       }
     ]));
 
@@ -58,20 +58,20 @@ describe('ShowVersesComponent', () => {
     component.verses$.subscribe(x => parsedVerses = x);
 
     expect(parsedVerses.length).toEqual(1);
-    expect(parsedVerses[0].chapterNumber).toEqual(1);
-    expect(parsedVerses[0].verseNumber).toEqual(1);
+    expect(parsedVerses[0].chapter).toEqual(1);
+    expect(parsedVerses[0].verse).toEqual(1);
   });
 
   it('should parse a single verse-range', () => {
     let parsedVerses: Verse[];
     mockVerseService.getVerses.and.returnValue(Observable.of([
       {
-        chapterNumber: 1,
-        verseNumber: 1
+        chapter: 1,
+        verse: 1
       },
       {
-        chapterNumber: 1,
-        verseNumber: 2
+        chapter: 1,
+        verse: 2
       }
     ]));
 
@@ -79,10 +79,10 @@ describe('ShowVersesComponent', () => {
     component.verses$.subscribe(x => parsedVerses = x);
 
     expect(parsedVerses.length).toEqual(2);
-    expect(parsedVerses[0].chapterNumber).toEqual(1);
-    expect(parsedVerses[0].verseNumber).toEqual(1);
-    expect(parsedVerses[1].chapterNumber).toEqual(1);
-    expect(parsedVerses[1].verseNumber).toEqual(2);
+    expect(parsedVerses[0].chapter).toEqual(1);
+    expect(parsedVerses[0].verse).toEqual(1);
+    expect(parsedVerses[1].chapter).toEqual(1);
+    expect(parsedVerses[1].verse).toEqual(2);
   });
 
 
@@ -90,24 +90,24 @@ describe('ShowVersesComponent', () => {
     let parsedVerses: Verse[];
     mockVerseService.getVerses.and.returnValue(Observable.of([
       {
-        chapterNumber: 3,
-        verseNumber: 4
+        chapter: 3,
+        verse: 4
       },
       {
-        chapterNumber: 5,
-        verseNumber: 67
+        chapter: 5,
+        verse: 67
       },
       {
-        chapterNumber: 5,
-        verseNumber: 68
+        chapter: 5,
+        verse: 68
       },
       {
-        chapterNumber: 1,
-        verseNumber: 1
+        chapter: 1,
+        verse: 1
       },
       {
-        chapterNumber: 1,
-        verseNumber: 2
+        chapter: 1,
+        verse: 2
       }
     ]));
 
@@ -117,20 +117,20 @@ describe('ShowVersesComponent', () => {
     expect(parsedVerses.length).toEqual(5);
 
     // 3.4
-    expect(parsedVerses[0].chapterNumber).toEqual(3);
-    expect(parsedVerses[0].verseNumber).toEqual(4);
+    expect(parsedVerses[0].chapter).toEqual(3);
+    expect(parsedVerses[0].verse).toEqual(4);
 
     // 5.67-68
-    expect(parsedVerses[1].chapterNumber).toEqual(5);
-    expect(parsedVerses[1].verseNumber).toEqual(67);
-    expect(parsedVerses[2].chapterNumber).toEqual(5);
-    expect(parsedVerses[2].verseNumber).toEqual(68);
+    expect(parsedVerses[1].chapter).toEqual(5);
+    expect(parsedVerses[1].verse).toEqual(67);
+    expect(parsedVerses[2].chapter).toEqual(5);
+    expect(parsedVerses[2].verse).toEqual(68);
 
     // 1.1-2
-    expect(parsedVerses[3].chapterNumber).toEqual(1);
-    expect(parsedVerses[3].verseNumber).toEqual(1);
-    expect(parsedVerses[4].chapterNumber).toEqual(1);
-    expect(parsedVerses[4].verseNumber).toEqual(2);
+    expect(parsedVerses[3].chapter).toEqual(1);
+    expect(parsedVerses[3].verse).toEqual(1);
+    expect(parsedVerses[4].chapter).toEqual(1);
+    expect(parsedVerses[4].verse).toEqual(2);
   });
 
 });

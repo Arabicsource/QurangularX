@@ -35,25 +35,25 @@ describe('VerseService', () => {
     const requestedVerses: VerseRange[] = [
       // Second chapter
       {
-        chapterNumber: 2,
+        chapter: 2,
         firstVerse: 3,
         lastVerse: 4
       },
       // Followed by first chapter
       {
-        chapterNumber: 1,
+        chapter: 1,
         firstVerse: 2,
         lastVerse: 2
       },
       // Followed by first chapter's previous verse
       {
-        chapterNumber: 1,
+        chapter: 1,
         firstVerse: 1,
         lastVerse: 1
       },
       // Second chapter, same verses again
       {
-        chapterNumber: 2,
+        chapter: 2,
         firstVerse: 3,
         lastVerse: 4
       }
@@ -61,20 +61,20 @@ describe('VerseService', () => {
 
     const unsortedVersesFromServer = [
       {
-        chapterNumber: 2,
-        verseNumber: 4
+        chapter: 2,
+        verse: 4
       },
       {
-        chapterNumber: 2,
-        verseNumber: 3
+        chapter: 2,
+        verse: 3
       },
       {
-        chapterNumber: 1,
-        verseNumber: 2
+        chapter: 1,
+        verse: 2
       },
       {
-        chapterNumber: 1,
-        verseNumber: 1
+        chapter: 1,
+        verse: 1
       },
     ];
 
@@ -93,23 +93,23 @@ describe('VerseService', () => {
 
     expect(receivedVerses.length).toEqual(6);
     // 2.3-?
-    expect(receivedVerses[0].chapterNumber).toEqual(2);
-    expect(receivedVerses[0].verseNumber).toEqual(3);
+    expect(receivedVerses[0].chapter).toEqual(2);
+    expect(receivedVerses[0].verse).toEqual(3);
     // 2.?-4
-    expect(receivedVerses[1].chapterNumber).toEqual(2);
-    expect(receivedVerses[1].verseNumber).toEqual(4);
+    expect(receivedVerses[1].chapter).toEqual(2);
+    expect(receivedVerses[1].verse).toEqual(4);
     // 1.2
-    expect(receivedVerses[2].chapterNumber).toEqual(1);
-    expect(receivedVerses[2].verseNumber).toEqual(2);
+    expect(receivedVerses[2].chapter).toEqual(1);
+    expect(receivedVerses[2].verse).toEqual(2);
     // 1.1
-    expect(receivedVerses[3].chapterNumber).toEqual(1);
-    expect(receivedVerses[3].verseNumber).toEqual(1);
+    expect(receivedVerses[3].chapter).toEqual(1);
+    expect(receivedVerses[3].verse).toEqual(1);
     // 2.3-?
-    expect(receivedVerses[4].chapterNumber).toEqual(2);
-    expect(receivedVerses[4].verseNumber).toEqual(3);
+    expect(receivedVerses[4].chapter).toEqual(2);
+    expect(receivedVerses[4].verse).toEqual(3);
     // 2.?-4
-    expect(receivedVerses[5].chapterNumber).toEqual(2);
-    expect(receivedVerses[5].verseNumber).toEqual(4);
+    expect(receivedVerses[5].chapter).toEqual(2);
+    expect(receivedVerses[5].verse).toEqual(4);
 
   }));
 });

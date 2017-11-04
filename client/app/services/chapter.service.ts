@@ -20,7 +20,7 @@ export class ChapterService {
       this.http
         .post(environment.apiServerUrl + 'api/chapters', null)
         .map(res => <Chapter[]>res.json())
-        .map(chapters => [...chapters].sort((a, b) => a.chapterNumber - b.chapterNumber))
+        .map(chapters => [...chapters].sort((a, b) => a.chapter - b.chapter))
         .subscribe((data: Chapter[]) => {
           this.hasData = true;
           this.chaptersSubject.next(data);

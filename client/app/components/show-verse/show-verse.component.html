@@ -1,8 +1,8 @@
 <article class="verse">
-  <a name="{{ verse?.chapterNumber + '.' + verse?.verseNumber}}" class="verse-reference">
-    <span class="verseReference" itemprop="articleSection">{{ verse?.chapterNumber + '.' + verse?.verseNumber }}</span>
+  <a name="{{ verse?.chapter + '.' + verse?.verse}}" class="verse-reference">
+    <span class="verseReference" itemprop="articleSection">{{ verse?.chapter + '.' + verse?.verse }}</span>
   </a>
-  <a routerLink="/analysis/{{verse?.chapterNumber}}.{{verse?.verseNumber}}" class="xref-link">
+  <a routerLink="/analysis/{{verse?.chapter}}.{{verse?.verse}}" class="xref-link">
     <dl>
       <dd>
         {{verse?.numberOfRoots}}
@@ -10,7 +10,7 @@
       <dt>Roots</dt>
     </dl>
   </a>
-  <a routerLink="/tafsirs/{{verse?.chapterNumber}}.{{verse?.verseNumber}}" *ngIf="verse?.numberOfTafsirs > 0" class="xref-link">
+  <a routerLink="/tafsirs/{{verse?.chapter}}.{{verse?.verse}}" *ngIf="verse?.numberOfTafsirs > 0" class="xref-link">
     <dl>
       <dd>
         {{verse.numberOfTafsirs}}
@@ -18,7 +18,7 @@
       <dt>Tafsirs</dt>
     </dl>
   </a>
-  <a routerLink="/hadiths/{{verse?.chapterNumber}}.{{verse?.verseNumber}}" *ngIf="verse?.numberOfHadiths > 0" class="xref-link">
+  <a routerLink="/hadiths/{{verse?.chapter}}.{{verse?.verse}}" *ngIf="verse?.numberOfHadiths > 0" class="xref-link">
     <dl>
       <dd>
         {{verse.numberOfHadiths}}

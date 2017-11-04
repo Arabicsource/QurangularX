@@ -36,10 +36,10 @@ describe('ChapterService', () => {
 
     const expectedData: Chapter[] = [
       <any>{
-        chapterNumber: 2
+        chapter: 2
       },
       <any>{
-        chapterNumber: 1
+        chapter: 1
       }
     ];
 
@@ -54,8 +54,8 @@ describe('ChapterService', () => {
     tick();
 
     expect(chapters.length).toEqual(2);
-    expect(chapters[0].chapterNumber).toEqual(1);
-    expect(chapters[1].chapterNumber).toEqual(2);
+    expect(chapters[0].chapter).toEqual(1);
+    expect(chapters[1].chapter).toEqual(2);
   }));
 
 });

@@ -9,13 +9,13 @@ export async function getChaptersHandler(req: express.Request, res: express.Resp
     .find({})
     .map(x => {
       return new Chapter({
-        chapterNumber: x.chapterNumber,
+        chapter: x.chapter,
         arabicName: x.arabicName,
         englishName: x.englishName,
         numberOfVerses: x.numberOfVerses
       });
     })
     .toArray())
-    .sort((a, b) => a.chapterNumber - b.chapterNumber);
+    .sort((a, b) => a.chapter - b.chapter);
   res.json(data);
 }
