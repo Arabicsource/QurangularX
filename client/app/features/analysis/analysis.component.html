@@ -1,3 +1,7 @@
 <p>
   analysis works!
 </p>
+<div *ngIf="verseReference$ | async; let verseReference">
+  <p>Chapter = {{ verseReference.chapter }}</p>
+  <p>Verse = {{ verseReference.verse }} </p>
+</div>

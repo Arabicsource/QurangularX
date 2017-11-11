@@ -11,8 +11,8 @@ export const routes: Route[] = [
     component: ChapterListComponent
   },
   {
-    path: 'analysis',
-    component: AnalysisComponent
+    component: AnalysisComponent,
+    matcher: routeMatchers.analysis
   },
   {
     component: ShowVersesComponent,
